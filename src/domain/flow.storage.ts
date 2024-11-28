@@ -14,7 +14,7 @@ export interface IFlowStorage {
 
 export const FLOW_STORAGE: IFlowStorage = {
   groups:[
-    {id:'g1', name:'Table1', columnNames:['id','name','age','email','address1','address2','address3','address4','address5','address6'], position:{x:100, y:100}, properties:{type:'left-table'},size:{width:171, height:232}},
+    {id:'g1', name:'Table1', columnNames:['id','name','age','email','address1_amar_tumar_r_karo_noi'], position:{x:100, y:100}, properties:{type:'left-table'},size:{width:171, height:232}},
     {id:'g2', name:'Table2', columnNames:['id','name'], position:{x:500, y:100}, properties:{type:'right-table'},size:{width:171, height:232}},
   ],
   nodes:[],
