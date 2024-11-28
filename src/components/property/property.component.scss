@@ -1,0 +1,17 @@
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: absolute;
+  right: 16px;
+  top: 70px;
+  width: 150px;
+  border: solid 1px var(--primary-soft);
+  background-color: var(--primary-soft);
+  padding: 10px;
+}
