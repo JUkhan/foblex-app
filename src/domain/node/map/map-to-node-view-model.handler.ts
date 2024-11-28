@@ -16,9 +16,9 @@ export class MapToNodeViewModelHandler implements IHandler<void, IFlowNodeViewMo
     return this.flow.nodes=this.flow.groups.flatMap(g=>this.getNodes(g));
   }
   private getNodes(group: IFlowGroupStorageModel){
-    console.log(group)
     let posY = group.position.y + 35;
     let nodes: IFlowNodeViewModel[]=[]
+    group.size.height=group.columnNames.length*28+35
     group.columnNames.forEach((col, idx) => {
       const node: Partial<IFlowNodeStorageModel> = {
         id: `${group.id}-${col}`,

@@ -115,8 +115,6 @@ export class FlowComponent implements OnInit {
   }
   public onGroupSizeChanged(rect: any, group:IFlowGroupViewModel): void {
     this.apiService.onGroupSizeChanged(rect, group)
-    this.getData();
-    
   }
 
   public onInitialized(): void {

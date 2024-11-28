@@ -40,7 +40,7 @@ export class FlowService {
 
   public removeConnection(connection: IFlowConnectionViewModel): void {
     this.flow.connections = this.flow.connections.filter(
-      (it) => it.from !== connection.from && it.to !== connection.to
+      (it) => !(it.from === connection.from && it.to === connection.to)
     );
   }
 
@@ -75,7 +75,7 @@ export class FlowService {
         name,
         position,
         type,
-        { width: 200, height: 300 },
+        { width: 171, height: 232 },
         ["Id", "Name"]
       )
     );
