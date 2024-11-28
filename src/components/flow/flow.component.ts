@@ -22,6 +22,7 @@ import { IFlowNodeStorageModel } from '../../domain/node/i-flow-node-storage-mod
 import {IFlowConnectionViewModel} from '../../domain/connection/i-flow-connection-view-model'
 import {PropertyComponent} from '../property/property.component'
 import { IFlowGroupViewModel } from '../../domain/group/i-flow-group-view-model';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -30,6 +31,7 @@ import { IFlowGroupViewModel } from '../../domain/group/i-flow-group-view-model'
   styleUrls: [ './flow.component.scss' ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  
   providers: [
     FlowService
   ],
@@ -40,6 +42,7 @@ import { IFlowGroupViewModel } from '../../domain/group/i-flow-group-view-model'
     PaletteComponent,
     NodeComponent,
     GroupComponent,
+    CommonModule
   ]
 })
 export class FlowComponent implements OnInit {

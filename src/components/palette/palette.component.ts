@@ -4,6 +4,7 @@ import {
 import { FFlowModule } from '@foblex/flow';
 import { ENodeType } from '../../domain/e-node-type';
 import { NODE_CONFIGURATION } from '../../domain/configuration';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'visual-programming-palette',
@@ -12,7 +13,7 @@ import { NODE_CONFIGURATION } from '../../domain/configuration';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    FFlowModule,
+    FFlowModule, CommonModule
   ]
 })
 export class PaletteComponent {

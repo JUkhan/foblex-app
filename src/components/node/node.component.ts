@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FFlowModule } from '@foblex/flow';
 import { IFlowNodeViewModel } from '../../domain/node/i-flow-node-view-model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'visual-programming-node',
@@ -8,7 +9,7 @@ import { IFlowNodeViewModel } from '../../domain/node/i-flow-node-view-model';
   styleUrls: [ './node.component.scss' ],
   standalone: true,
   imports: [
-    FFlowModule,
+    FFlowModule, CommonModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -1,4 +1,4 @@
-@if (selectedGroup) {
+<ng-container *ngIf="selectedGroup">
   <div class="container">
     <div>{{selectedGroup.name}}</div>
     <div>Select table type</div>
@@ -8,9 +8,9 @@
     </select>
     <button (click)="removeTable()">Remove</button>
   </div>
-}
+</ng-container>
 
-@if (selectedConnection) {
+<ng-container *ngIf="selectedConnection">
   <div class="container">
     <div>Select join type</div>
     <select (change)="joinChange($event.target)" [value]="selectedConnection.name">
@@ -22,5 +22,6 @@
     </select>
     <button (click)="removeConnection()">Remove</button>
   </div>
-}
+</ng-container>
+
 

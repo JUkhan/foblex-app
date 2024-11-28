@@ -32,7 +32,6 @@ export class MapToNodeViewModelHandler implements IHandler<void, IFlowNodeViewMo
       }
       node.position = { x: group.position.x + 7, y: posY };
       posY += 28;
-      console.log(node)
       nodes.push(node as any);
     });
     

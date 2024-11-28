@@ -1,17 +1,18 @@
-@if (node) {
+<ng-container *ngIf="node">
   
   <div class="interactive-node-body selected-background" [attr.title]="node.name">
-    @if (node.output) {
+    <ng-container *ngIf="node.output">
       <div fNodeOutput [fOutputMultiple]="true" [fOutputId]="node.output!"></div>
       <div fNodeOutlet></div>
-    }
+    </ng-container>
 
-    @if (node.input) {
+    <ng-container *ngIf="node.input">
       <div fNodeInput [fInputMultiple]="false" [fInputId]="node.input"></div>
-    }
+    </ng-container>
+    
     <div class="icon">
       {{ node.name.substring(0,16) }}
     </div>
   </div>
-}
+</ng-container>
 

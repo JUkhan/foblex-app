@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FFlowModule, EFResizeHandleType } from '@foblex/flow';
 import { IFlowGroupViewModel } from '../../domain/group/i-flow-group-view-model';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { IFlowGroupViewModel } from '../../domain/group/i-flow-group-view-model'
   styleUrls: [ './group.component.scss' ],
   standalone: true,
   imports: [
-    FFlowModule,
+    FFlowModule, CommonModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

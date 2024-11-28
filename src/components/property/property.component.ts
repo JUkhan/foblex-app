@@ -4,7 +4,7 @@ import {
   Input,
 } from '@angular/core';
 import { FlowComponent } from '../flow/flow.component';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { IFlowGroupViewModel } from '../../domain/group/i-flow-group-view-model';
 import {IFlowConnectionViewModel} from '../../domain/connection/i-flow-connection-view-model'
 
@@ -13,8 +13,7 @@ import {IFlowConnectionViewModel} from '../../domain/connection/i-flow-connectio
   templateUrl: './property.component.html',
   styleUrls: [ './property.component.scss' ],
   standalone: true,
-  
-  viewProviders:[AsyncPipe],
+  imports:[CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PropertyComponent {
