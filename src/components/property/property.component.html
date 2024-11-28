@@ -1,10 +1,26 @@
 @if (selectedGroup) {
   <div class="container">
     <div>{{selectedGroup.name}}</div>
+    <div>Select table type</div>
+    <select (change)="typeChange($event.target)" [value]="selectedGroup.properties['type']">
+      <option value="left-table">Left Table</option>
+      <option value="right-table">Right Table</option>
+    </select>
+    <button (click)="removeTable()">Remove</button>
   </div>
 }
 
 @if (selectedConnection) {
-  <div class="container"></div>
+  <div class="container">
+    <div>Select join type</div>
+    <select (change)="joinChange($event.target)" [value]="selectedConnection.name">
+      <option value="join">Join</option>
+      <option value="left join">Left Join</option>
+      <option value="right join">Right Join</option>
+      <option value="inner join">InnerJoin</option>
+      <option value="self join">Self Join</option>
+    </select>
+    <button (click)="removeConnection()">Remove</button>
+  </div>
 }
 

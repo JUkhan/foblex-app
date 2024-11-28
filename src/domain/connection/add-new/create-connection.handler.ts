@@ -31,7 +31,7 @@ export class CreateConnectionHandler implements IHandler<CreateConnectionRequest
     return {
       from: outputId,
       to: inputId,
-      name:'Left Join'
+      name:'left join'
     };
   }
 }

@@ -21,6 +21,5 @@ export class GroupComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialization logic here
-    console.log(this.group)
   }
 }

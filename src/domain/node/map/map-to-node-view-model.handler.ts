@@ -1,7 +1,6 @@
 import { IHandler } from '@foblex/mediator';
 import { IFlowNodeViewModel } from '../i-flow-node-view-model';
 import { IFlowStorage } from '../../flow.storage';
-import { NODE_CONFIGURATION } from '../../configuration';
 import { IFlowNodeStorageModel } from '../i-flow-node-storage-model';
 import { IFlowGroupStorageModel } from '../../group/i-flow-group-storage-model';
 import { EGroupType } from "../../e-node-type";
@@ -14,16 +13,12 @@ export class MapToNodeViewModelHandler implements IHandler<void, IFlowNodeViewMo
   }
 
   public handle(): IFlowNodeViewModel[] {
-    console.log('---node map-----')
-    const ts= this.flow.groups.flatMap(g=>this.getNodes(g))
-    this.flow.nodes=ts;
-    console.log(ts)
-    return ts
+    return this.flow.nodes=this.flow.groups.flatMap(g=>this.getNodes(g));
   }
   private getNodes(group: IFlowGroupStorageModel){
+    console.log(group)
     let posY = group.position.y + 35;
     let nodes: IFlowNodeViewModel[]=[]
-    console.log(group.columnNames);
     group.columnNames.forEach((col, idx) => {
       const node: Partial<IFlowNodeStorageModel> = {
         id: `${group.id}-${col}`,
@@ -37,6 +32,7 @@ export class MapToNodeViewModelHandler implements IHandler<void, IFlowNodeViewMo
       }
       node.position = { x: group.position.x + 7, y: posY };
       posY += 28;
+      console.log(node)
       nodes.push(node as any);
     });
     

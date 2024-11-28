@@ -53,7 +53,6 @@ export class MapToConnectionViewModelHandler implements IHandler<void, IFlowConn
 
   private getNodes(fromToId: string): IFlowNodeStorageModel[] {
     const groupId=fromToId.split('-')[0]
-    console.log(fromToId, this.flow.nodes)
     return this.flow.nodes.filter(n=>n.groupId===groupId);
   }
 }

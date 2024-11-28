@@ -55,25 +55,6 @@ export class FlowComponent implements OnInit {
     connections: []
   };
 
-  public onCanvasClick(ev:any): void{
-    if(ev.target.id==='f-flow-0'){
-      this.selectedGroup=undefined;
-      this.selectedConnection=undefined;
-    }
-  }
-  public onGroupClick(group:IFlowGroupViewModel): void{
-    this.selectedGroup=group;
-    this.selectedConnection=undefined;
-  }
-  public onConnectionClick(conn:IFlowConnectionViewModel): void{
-   this.selectedConnection=conn;
-   this.selectedGroup=undefined;
-  }
-  public onNodeSizeChanged(rect: any, group:IFlowGroupStorageModel): void {
-    console.log('Node size changed', rect);
-    group.size={width:rect.width, height:rect.height}
-  }
-
   @ViewChild(FCanvasComponent, { static: true })
   public fCanvasComponent!: FCanvasComponent;
 
@@ -92,8 +73,55 @@ export class FlowComponent implements OnInit {
     this.getData();
   }
 
+  public onCanvasClick(ev:any): void{
+    if(ev.target.id==='f-flow-0'){
+      this.selectedGroup=undefined;
+      this.selectedConnection=undefined;
+    }
+  }
+  public onGroupClick(group:IFlowGroupViewModel): void{
+    this.selectedGroup=group;
+    this.selectedConnection=undefined;
+  }
+  public typeChange(newType: string): void{
+    if(this.selectedGroup){
+      this.apiService.typeChange(this.selectedGroup, newType)
+      this.getData();
+    }
+  }
+  public removeGroup(): void{
+    if(this.selectedGroup){
+      this.apiService.removeGroup(this.selectedGroup)
+      this.getData();
+      this.selectedGroup=undefined;
+    }
+  }
+  public joinChange(joinName: string):void{
+    if(this.selectedConnection){
+    this.apiService.joinChange(this.selectedConnection, joinName)
+    this.getData();
+    }
+  }
+  public removeConnection(): void {
+    if(this.selectedConnection){
+    this.apiService.removeConnection(this.selectedConnection)
+    this.getData();
+    this.selectedConnection=undefined;
+    }
+  }
+  public onConnectionClick(conn:IFlowConnectionViewModel): void{
+   this.selectedConnection=conn;
+   this.selectedGroup=undefined;
+  }
+  public onGroupSizeChanged(rect: any, group:IFlowGroupViewModel): void {
+    this.apiService.onGroupSizeChanged(rect, group)
+    this.getData();
+    
+  }
+
   public onInitialized(): void {
-    this.fCanvasComponent.fitToScreen(new Point(40, 40), false);
+    //this.fCanvasComponent.fitToScreen(new Point(40, 40), false);
+    //this.fCanvasComponent.resetScaleAndCenter()
   }
 
   public getData(): void {
@@ -102,16 +130,11 @@ export class FlowComponent implements OnInit {
   }
 
   public onNodeAdded(event: FCreateNodeEvent): void {
-    //this.apiService.addNode(event.data as ENodeType, event.rect);
-    console.log(event.data)
     this.apiService.addGroup(event.data, event.rect, this.viewModel.groups.length===0?EGroupType.LeftTable:EGroupType.RightTable);
     this.getData();
-    console.log(this.viewModel.nodes)
   }
 
   public onReassignConnection(event: FReassignConnectionEvent): void {
-    //this.apiService.reassignConnection(event.fOutputId, event.oldFInputId, event.newFInputId);
-    //this.getData();
     console.log('reassign connection', event)
   }
 
@@ -119,13 +142,11 @@ export class FlowComponent implements OnInit {
     if (!event.fInputId) {
       return;
     }
-    console.log(event.fOutputId, event.fInputId)
     this.apiService.addConnection(event.fOutputId, event.fInputId);
     this.getData();
   }
 
-  public onNodePositionChanged(point: IPoint, node: IFlowGroupStorageModel|IFlowNodeStorageModel): void {
-    node.position = point;
+  public onNodePositionChanged(point: IPoint, node: IFlowGroupStorageModel): void {
     this.apiService.moveGroup(node.id, point);
   }
 }

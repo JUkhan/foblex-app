@@ -12,7 +12,6 @@ export class MapToGroupViewModelHandler implements IHandler<void, IFlowGroupView
   }
 
   public handle(): IFlowGroupViewModel[] {
-    console.log('--------------GROUP MAP---------------------')
     return this.flow.groups.map((group) => {
       return {
         ...group,

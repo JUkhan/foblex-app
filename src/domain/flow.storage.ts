@@ -14,12 +14,11 @@ export interface IFlowStorage {
 
 export const FLOW_STORAGE: IFlowStorage = {
   groups:[
-    {id:'g1', name:'Table1', columnNames:['id','name'], position:{x:300, y:300}, properties:{type:'left-table'},size:{width:120, height:200}},
-    {id:'g2', name:'Table2', columnNames:['id','name'], position:{x:500, y:300}, properties:{type:'left-table'},size:{width:120, height:200}},
-    {id:'g3', name:'Table3', columnNames:['id','name'], position:{x:300, y:550}, properties:{type:'left-table'},size:{width:120, height:200}}
+    {id:'g1', name:'Table1', columnNames:['id','name'], position:{x:300, y:100}, properties:{type:'left-table'},size:{width:120, height:200}},
+    {id:'g2', name:'Table2', columnNames:['id','name'], position:{x:500, y:100}, properties:{type:'right-table'},size:{width:120, height:200}},
   ],
   nodes:[],
-  connections:[]
+  connections:[{from:'g1-id-0', to:'g2-id-0', name:'left join'}]
 }
 const abc={
 

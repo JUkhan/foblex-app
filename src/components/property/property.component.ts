@@ -29,20 +29,19 @@ export class PropertyComponent {
   ) {
   }
 
-  public onZoomIn(): void {
-    this.flowComponent.fZoomDirective.zoomIn();
+  public joinChange(ev:any): void{
+    this.flowComponent.joinChange(ev.value)
   }
 
-  public onZoomOut(): void {
-    this.flowComponent.fZoomDirective.zoomOut();
+  public removeConnection(): void{
+    this.flowComponent.removeConnection()
   }
 
-  public onFitToScreen(): void {
-    this.flowComponent.fCanvasComponent.fitToScreen();
+  public typeChange(ev: any): void{
+    this.flowComponent.typeChange(ev.value)
   }
 
-  public onOneToOne(): void {
-    //this.flowComponent.fCanvasComponent.oneToOne();
-    this.flowComponent.fCanvasComponent.resetScaleAndCenter()
+  public removeTable():void{
+    this.flowComponent.removeGroup();
   }
 }
