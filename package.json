@@ -14,7 +14,7 @@
     "@angular/forms": "^18.1.0",
     "@angular/platform-browser": "^18.1.0",
     "@angular/router": "^18.1.0",
-    "@foblex/flow": "^12.6.5",
+    "@foblex/flow": "^16.0.5",
     "rxjs": "^7.8.1",
     "tslib": "^2.5.0",
     "zone.js": "~0.14.0"
